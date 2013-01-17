@@ -19,7 +19,7 @@ if [ "-i" = "$1" ]; then
     shift         # and this should leave $1 as the target name
   fi
 else
-  if [ x$SSH_AUTH_SOCK != x ] && ssh-add -L >/dev/null 2>&1; then
+  if [ x$SSH_AUTH_SOCK != x ] ; then
     GET_ID="$GET_ID ssh-add -L"
   fi
 fi
@@ -38,14 +38,13 @@ if [ "$#" -lt 1 ] || [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
   exit 1
 fi
 
-{ eval "$GET_ID" ; } | ssh ${1%:} "umask 077; test -d .ssh || mkdir .ssh ; cat >> .ssh/authorized_keys" || exit 1
+{ eval "$GET_ID" ; } | ssh $1 "umask 077; test -d .ssh || mkdir .ssh ; cat >> .ssh/authorized_keys; test -x /sbin/restorecon && /sbin/restorecon .ssh .ssh/authorized_keys" || exit 1
 
 cat <<EOF
-Now try logging into the machine, with "ssh '${1%:}'", and check in:
+Now try logging into the machine, with "ssh '$1'", and check in:
 
   .ssh/authorized_keys
 
 to make sure we haven't added extra keys that you weren't expecting.
 
 EOF
-
