@@ -20,7 +20,7 @@ if [ "-i" = "$1" ]; then
   fi
 else
   if [ x$SSH_AUTH_SOCK != x ] ; then
-    GET_ID="$GET_ID ssh-add -L"
+    GET_ID="$GET_ID ssh-add -L | grep -vxF 'The agent has no identities.'"
   fi
 fi
 
