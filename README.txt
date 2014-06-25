@@ -7,7 +7,7 @@ Git clone & run install script
 
 OR
 
-curl https://raw.githubusercontent.com/beautifulcode/ssh-copy-id-for-OSX/master/install.sh | sh
+curl -L https://raw.githubusercontent.com/beautifulcode/ssh-copy-id-for-OSX/master/install.sh | sh
 
 
 
