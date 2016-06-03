@@ -20,9 +20,9 @@ OR
 ### SYNOPSIS
 ssh-copy-id [-i [identity_file]] [user@]machine
 
-#### DESCRIPTION
+### DESCRIPTION
 
-** ssh-copy-id ** is a script that uses ssh to log into a remote machine (presumably using a login password, so password authentication should be enabled, unless
+**ssh-copy-id** is a script that uses ssh to log into a remote machine (presumably using a login password, so password authentication should be enabled, unless
 you've done some clever use of multiple identities)
 
 It also changes the permissions of the remote user's home, `~/.ssh`, and `~/.ssh/authorized_keys` to remove group writability (which would otherwise prevent
@@ -38,7 +38,7 @@ provides any output, it uses that in preference to the identity file.
 If the `-i` option is used, or the ssh-add produced no output, then it uses the contents of the identity file. Once it has one or more fingerprints (by
 whatever means) it uses ssh to append them to `~/.ssh/authorized_keys` on the remote machine (creating the file, and directory, if necessary)
 
-__ SEE ALSO __
+### SEE ALSO
 
 ssh(1), ssh-agent(1), sshd(8)
 
