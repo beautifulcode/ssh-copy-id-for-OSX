@@ -2,6 +2,8 @@
 
 > Quick port of the useful unix utility `ssh-copy-id`
 
+## Note: MacOS Sierra now includes an onboard `ssh-copy-id` in `/usr/bin` 
+
 ## Installation
 
 Git clone & run install script
